@@ -39,8 +39,8 @@ class Tela:
     def preencher_fundo_tela(self):
         self.tela_pygame.fill(self.cor_fundo)
 
-    def exibir_mensagem(self,mensagem,pos_x,pos_y):
-        self.tela_pygame.blit(mensagem,[pos_x,pos_y])
+    def exibir_mensagem(self,mensagem,pos):
+        self.tela_pygame.blit(mensagem,pos)
 
 class Relogio:
 
@@ -88,7 +88,7 @@ class Jogo:
         self.executar = False
         self.pontos = 0
 
-    def iniciar_jogo(self):
+    def iniciar_elementos(self):
         pygame.init()
         self.tela.iniciar_tela()
         self.relogio.iniciar_relogio()
@@ -155,17 +155,16 @@ class Jogo:
 
         self.comida.desenhar_na_tela(self.tela.tela_pygame)
 
-    def exibir_mensagem(self,mensagem):
-        self.tela.tela_pygame.blit(mensagem,[0,0])
-
     def executar_jogo(self):
+
+        self.iniciar_elementos()
+
         while self.executar:
 
             mensagem = self.fonte.fonte_pygame.render("Pontos: " + str(self.pontos),True,(0,0,0))
             self.tela.preencher_fundo_tela()
-            self.exibir_mensagem(mensagem)
+            self.tela.exibir_mensagem(mensagem,[0,0])
             self.capturar_movimento()
-
             self.cobra.mover_corpo(0,self.cobra.mover_x,self.cobra.mover_y)
             self.verificar_colisoes()
             self.desenhar_elementos_tela()
@@ -188,5 +187,4 @@ if __name__ == "__main__":
     cobra = Cobra(cabeca,10)
 
     jogo = Jogo(tela,fonte,relogio,cobra,comida)
-    jogo.iniciar_jogo()
     jogo.executar_jogo()
