@@ -3,11 +3,13 @@ def verificar_bissexto(ano):
         return True
     return False
 
-#Acha o dia da semana para qualquer dia, mes e ano informado.
-#Retorno possível: 0,1,2,3,4,5,6 onde cada valor corresponde:
-#0 -> Sábado; 1 -> Domingo; 2 -> Segunda-Feira; [...] ; 6 -> Sexta-Feira
-#Para mais informações pesquise pela Congruência de Zeller e sua implementação em Software    
 def calcular_congruencia_zeller(dia,mes,ano):  
+    '''
+    Acha o dia da semana para qualquer dia, mes e ano informado.
+    Retorno possível: 0,1,2,3,4,5,6 onde cada valor corresponde:
+    0 -> Sábado; 1 -> Domingo; 2 -> Segunda-Feira; [...] ; 6 -> Sexta-Feira
+    Para mais informações pesquise pela Congruência de Zeller e sua implementação em Software
+    '''
     if mes == 1: 
         mes = 13
         ano -= 1  
